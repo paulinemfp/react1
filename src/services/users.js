@@ -1,4 +1,5 @@
 import { users as data } from "../data/users";
+import * as utils from "../utils.js";
 
 //private
 let users = [...data];
@@ -27,7 +28,12 @@ export function updateUser(id, userInfo) {
   });
 }
 
-function addUser(userInfo) {
+export function addUser(userInfo) {
+  console.log("addUser");
   // add user (userInfo is an object which can optionally contain properties of a user)
   // use generateId function and pass users array as the argument to generate a unique id.
+  userInfo.id = utils.generateId(users);
+  users = [userInfo, ...users];
+  console.log(users[0])
+
 }
